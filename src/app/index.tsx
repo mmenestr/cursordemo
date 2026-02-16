@@ -5,8 +5,10 @@ import { AppLayout } from '@app/AppLayout/AppLayout';
 import { AppRoutes } from '@app/routes';
 import '@app/app.css';
 
+const basePath = (typeof process !== 'undefined' && process.env?.ASSET_PATH) || '/';
+
 const App: React.FunctionComponent = () => (
-  <Router>
+  <Router basename={basePath}>
     <AppLayout>
       <AppRoutes />
     </AppLayout>

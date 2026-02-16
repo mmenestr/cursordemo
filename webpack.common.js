@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
@@ -103,6 +104,9 @@ export default (env) => {
       publicPath: ASSET_PATH,
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
+      }),
       new HtmlWebpackPlugin({
         template: path.resolve('./src', 'index.html'),
       }),
